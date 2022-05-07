@@ -1,17 +1,26 @@
 # ETL pipelines 
 
 1. [Build an ETL Pipeline using Airflow](#AirFlow)
-2. [Kafka](#Kafka)
+    1. [Scenario](#Scenario)
+    2. [Objectives](#Objectives)
+    3. [Prepare the environment](#environment)
+    4. [Build the Ariflow DAG](#DAG)
+    
+2. [Creating Streaming Data Pipelines using Kafka](#Kafka)   
+    1. [Scenario](#scen)
+    2. [Objectives](#obj)
+    3. [Prepare the environment](#env)
+    4. [Building Kafka](#Kafka)
 
-
-
-## Build an ETL Pipeline using Airflow
 
 <a name="AirFlow"></a>
+## Build an ETL Pipeline using Airflow 
 
+
+<a name="Scenario"></a>
 ### Scenario
 we are a data engineer at a data analytics consulting company. we have been assigned to a project that aims to de-congest the national highways by analyzing the road traffic data from different toll plazas. Each highway is operated by a different toll operator with a different IT setup that uses different file formats. our job is to collect data available in different formats and consolidate it into a single file.
-
+<a name="Objectives"></a>
 ### Objectives
 Building Apache Airflow DAG that will:
 
@@ -21,6 +30,7 @@ Building Apache Airflow DAG that will:
 + Transform the data
 + Load the transformed data into the staging area  
 
+<a name="environment"></a>
 ### Prepare the environment
 + Start Apache Airflow.  
    + using the command start_airflow
@@ -28,7 +38,10 @@ Building Apache Airflow DAG that will:
     * from the source here : https://cf-courses-data.s3.us.cloud-object-storage.appdomain.cloud/IBM-DB0250EN-SkillsNetwork/labs/Final%20Assignment/tolldata.tgz
     ![wget.png](attachment:wget.png)
 
-    #### 1. Create a DAG
+    <a name="DAG"></a>
+
+### Build the Ariflow DAG
+#### 1. Create a DAG
 <img src="/AirFlow/images/1.dag_args.jpg"/>   
 
 #### 2. Define the DAG
@@ -63,10 +76,12 @@ Building Apache Airflow DAG that will:
 <a name="Kafka"></a>
 ## Creating Streaming Data Pipelines using Kafka
 
+<a name="scen"></a>
 
 ### Scenario
 we are a data engineer at a data analytics consulting company. we have been assigned to a project that aims to de-congest the national highways by analyzing the road traffic data from different toll plazas. As a vehicle passes a toll plaza, the vehicle's data like vehicle_id,vehicle_type,toll_plaza_id and timestamp are streamed to Kafka. our job is to create a data pipe line that collects the streaming data and loads it into a database.
 
+<a name="obj"></a>
 ### Objectives
 Building a streaming data pipe by performing these steps:
 
@@ -82,6 +97,8 @@ Building a streaming data pipe by performing these steps:
 + Customize the consumer program to write into a MySQL database table.
 + Verify that streamed data is being collected in the database table.
 
+<a name="env"></a>
+
 ### Prepare the environment
 
 * download the:--> kafka:` wget https://archive.apache.org/dist/kafka/2.8.0/kafka_2.12-2.8.0.tgz`
@@ -96,6 +113,8 @@ Building a streaming data pipe by performing these steps:
 * Install the python module kafka-python:--> `pip3 install kafka-python`
 * Install the python module mysql-connector-python:--> `pip3 install mysql-connector-python`
 
+### Building Kafka  
+<a name="Kafka"></a>
 
 #### 1. Start Zookeeper
 <img src="/Kafka/images/1.start_zookeeper.jpg"/>  
