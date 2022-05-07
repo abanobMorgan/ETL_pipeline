@@ -1,5 +1,13 @@
 # ETL pipelines 
+
+1. [Build an ETL Pipeline using Airflow](#AirFlow)
+2. [Kafka](#Kafka)
+
+
+
 ## Build an ETL Pipeline using Airflow
+
+<a name="AirFlow"></a>
 
 ### Scenario
 we are a data engineer at a data analytics consulting company. we have been assigned to a project that aims to de-congest the national highways by analyzing the road traffic data from different toll plazas. Each highway is operated by a different toll operator with a different IT setup that uses different file formats. our job is to collect data available in different formats and consolidate it into a single file.
@@ -52,3 +60,60 @@ Building Apache Airflow DAG that will:
 
 
 
+<a name="Kafka"></a>
+## Creating Streaming Data Pipelines using Kafka
+
+
+### Scenario
+we are a data engineer at a data analytics consulting company. we have been assigned to a project that aims to de-congest the national highways by analyzing the road traffic data from different toll plazas. As a vehicle passes a toll plaza, the vehicle's data like vehicle_id,vehicle_type,toll_plaza_id and timestamp are streamed to Kafka. our job is to create a data pipe line that collects the streaming data and loads it into a database.
+
+### Objectives
+Building a streaming data pipe by performing these steps:
+
++ Start a MySQL Database server.
++ Create a table to hold the toll data.
++ Start the Kafka server.
++ Install the Kafka python driver.
++ Install the MySQL python driver.
++ Create a topic named toll in kafka.
++ Download streaming data generator program.
++ Customize the generator program to steam to toll topic.
++ Download and customise streaming data consumer.
++ Customize the consumer program to write into a MySQL database table.
++ Verify that streamed data is being collected in the database table.
+
+### Prepare the environment
+
+* download the:--> kafka:` wget https://archive.apache.org/dist/kafka/2.8.0/kafka_2.12-2.8.0.tgz`
+* Extract Kafka:--> `tar -xzf kafka_2.12-2.8.0.tgz`
+* start MySQL data base:--> `start_mysql`
+* Connect to the mysql server:--> `mysql --host=127.0.0.1 --port=3306 --user=root --password= ******` 
+* Create a database named tolldata:--> `create database tolldata;`
+* Create a table named livetolldata:-->   
+    `use tolldata;  
+    create table livetolldata(timestamp datetime,vehicle_id int,vehicle_type char(15),toll_plaza_id smallint);`
+* Disconnect from MySQL server:--> `exit`
+* Install the python module kafka-python:--> `pip3 install kafka-python`
+* Install the python module mysql-connector-python:--> `pip3 install mysql-connector-python`
+
+
+#### 1. Start Zookeeper
+<img src="/Kafka/images/1.start_zookeeper.jpg"/>  
+
+#### 2. Start Kafka server
+<img src="/Kafka/images/2.start_kafka.jpg"/>  
+
+#### 3. Create a topic named toll
+<img src="/Kafka/images/3.create_toll_topic.jpg"/>  
+
+#### 4. Create Toll Traffic Simulator
+<img src="/Kafka/images/4.Create_Toll_Traffic_Simulator.jpg"/>  
+
+#### 5. Run the Toll Traffic Simulator
+<img src="/Kafka/images/5.simulator_output.jpg"/>  
+
+#### 6. Create streaming_data_reader.py
+<img src="/Kafka/images/6.Create_streaming_data_reader.py.jpg"/>  
+
+#### 7. Run streaming_data_reader.py
+<img src="/Kafka/images/7.data_reader_output.jpg"/>  
